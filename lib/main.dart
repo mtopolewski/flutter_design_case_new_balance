@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_case_new_balance/styles/colors.dart';
 import 'package:flutter_design_case_new_balance/styles/sizes.dart';
+import 'package:flutter_design_case_new_balance/widgets/bottom_tab_bar.dart';
 import 'package:flutter_design_case_new_balance/widgets/category_buton.dart';
 import 'package:flutter_design_case_new_balance/widgets/dots_button.dart';
 
@@ -114,7 +115,9 @@ class HomePage extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 20),
                                 child: Text(
                                   "Start with essentials.",
-                                  style: TextStyle(fontSize: 32),
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             )
@@ -137,24 +140,27 @@ class HomePage extends StatelessWidget {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      const Center(
+                      Center(
                         child: Padding(
-                          padding: EdgeInsets.only(
-                              left: AppSizes.defaultMargin, right: 20),
-                          child: CategoryButton(),
+                          padding: const EdgeInsets.only(
+                              left: AppSizes.defaultMargin, right: 10),
+                          child: CategoryButton(true,
+                              icon: Icons.shower_sharp, title: "Shoes"),
                         ),
                       ),
-                      Container(
-                        width: 300,
-                        color: Colors.red,
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: CategoryButton(false,
+                              icon: Icons.block, title: "Clothings"),
+                        ),
                       ),
-                      Container(
-                        width: 300,
-                        color: Colors.yellow,
-                      ),
-                      Container(
-                        width: 300,
-                        color: Colors.green,
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: CategoryButton(false,
+                              icon: Icons.ballot, title: "Sport"),
+                        ),
                       ),
                     ],
                   ),
@@ -196,11 +202,7 @@ class HomePage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              //TODO: change to bottom bar
-              height: 100,
-              color: Color(0xBB000000),
-            ),
+            child: BottomTabBar(),
           )
         ],
       ),
