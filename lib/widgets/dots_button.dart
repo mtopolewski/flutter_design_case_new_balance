@@ -6,29 +6,42 @@ class DotsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Ink(
-        color: Colors.transparent,
-        child: SizedBox(
-          height: 36,
-          width: 36,
-          child: GridView.count(
-            crossAxisCount: 2,
-            children: const [
-              Dot(
-                color: AppColors.buttonBlack,
-              ),
-              Dot(
-                color: AppColors.buttonBlack,
-              ),
-              Dot(
-                color: AppColors.buttonBlack,
-              ),
-              Dot(
-                color: AppColors.buttonRed,
-              ),
-            ],
+    return Material(
+      borderRadius: BorderRadius.circular(8.0),
+      clipBehavior: Clip.antiAlias,
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {},
+        child: Ink(
+          color: Colors.transparent,
+          child: SizedBox(
+            height: 36,
+            width: 36,
+            // child: Container(
+            //   height: 10,
+            //   width: 10,
+            //   color: Colors.red,
+            // ),
+            child: GridView.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 0,
+              crossAxisSpacing: 0,
+              padding: EdgeInsets.all(0), //TODO: WTF?!?!?
+              children: const [
+                Dot(
+                  color: AppColors.buttonBlack,
+                ),
+                Dot(
+                  color: AppColors.buttonBlack,
+                ),
+                Dot(
+                  color: AppColors.buttonBlack,
+                ),
+                Dot(
+                  color: AppColors.buttonRed,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -47,8 +60,11 @@ class Dot extends StatelessWidget {
         width: 8,
         height: 8,
         decoration: BoxDecoration(
-            color: color,
-            borderRadius: const BorderRadius.all(Radius.circular(4))),
+          color: color,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(4),
+          ),
+        ),
       ),
     );
   }

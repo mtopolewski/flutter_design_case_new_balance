@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_case_new_balance/styles/colors.dart';
 import 'package:flutter_design_case_new_balance/styles/sizes.dart';
+import 'package:flutter_design_case_new_balance/widgets/category_buton.dart';
 import 'package:flutter_design_case_new_balance/widgets/dots_button.dart';
 
 void main() {
@@ -60,42 +61,104 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      // appBar: AppBar(
-      //   titleSpacing: 0,
-      //   backgroundColor: AppColors.backgroundWhite,
-      //   //toolbarOpacity: 0,
-      //   shadowColor: Colors.transparent,
-      //   leading: const Center(child: DotsButton()),
-      //   centerTitle: true,
-      //   //elevation: 0,
-      //   title: const SizedBox(
-      //     height: 30,
-      //     child: Image(
-      //       image: AssetImage('lib/assets/new_balance_red_logo.png'),
-      //     ),
-      //   ),
-      //   actions: [
-      //     InkWell(
-      //       onTap: () {},
-      //       child: Ink(
-      //         child: const SizedBox(
-      //           height: 40,
-      //           width: 40,
-      //           child: Icon(
-      //             Icons.search,
-      //             color: Colors.black,
-      //             size: 36,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 20),
+                  height: 140,
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 120,
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: AppSizes.defaultMargin),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(141, 156, 156, 156),
+                                blurRadius: 20.0,
+                                //offset: Offset(4, 4),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSizes.defaultMargin),
+                        child: Row(
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: SizedBox(
+                                height: 140,
+                                child: Image(
+                                  image: AssetImage(
+                                    'lib/assets/new-balance-sudadera-con-capucha.png',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: Text(
+                                  "Start with essentials.",
+                                  style: TextStyle(fontSize: 32),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: AppSizes.defaultMargin),
+                  child: Text(
+                    "Categories",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      const Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: AppSizes.defaultMargin, right: 20),
+                          child: CategoryButton(),
+                        ),
+                      ),
+                      Container(
+                        width: 300,
+                        color: Colors.red,
+                      ),
+                      Container(
+                        width: 300,
+                        color: Colors.yellow,
+                      ),
+                      Container(
+                        width: 300,
+                        color: Colors.green,
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                   height: 200,
                   color: Colors.red,
