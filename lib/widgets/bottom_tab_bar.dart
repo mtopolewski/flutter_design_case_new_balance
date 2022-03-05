@@ -21,13 +21,13 @@ class BottomTabBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TabButton(),
-                  TabButton(),
+                  TabButton(icon: Icons.home),
+                  TabButton(icon: Icons.favorite_border_outlined),
                   Container(
                     width: 74,
                   ),
-                  TabButton(),
-                  TabButton(),
+                  TabButton(icon: Icons.notifications),
+                  TabButton(icon: Icons.account_box),
                 ],
               ),
             ),
@@ -159,15 +159,37 @@ class BottomMenuClipper extends CustomClipper<Path> {
   double degToRad(num deg) => deg * (Math.pi / 180.0);
 }
 
-class TabButton extends StatelessWidget {
-  const TabButton({Key? key}) : super(key: key);
+class TabButton extends StatefulWidget {
+  const TabButton({required this.icon, this.isPressed = false, Key? key})
+      : super(key: key);
+  final IconData icon;
+  final bool isPressed;
+
+  @override
+  State<TabButton> createState() => _TabButtonState();
+}
+
+class _TabButtonState extends State<TabButton> {
+  bool isPressed = false;
+
+  @override
+  void initState() {
+    isPressed = widget.isPressed;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    var selectorColor = isPressed ? AppColors.buttonRed : Colors.transparent;
+    var iconColor = isPressed ? AppColors.buttonRed : Colors.grey;
     return Material(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          setState(() {
+            isPressed = !isPressed;
+          });
+        },
         child: SizedBox(
           height: 60,
           child: Ink(
@@ -175,10 +197,10 @@ class TabButton extends StatelessWidget {
               height: 60,
               child: Column(
                 children: [
-                  const Icon(
-                    Icons.ac_unit,
+                  Icon(
+                    widget.icon,
                     size: 36,
-                    color: AppColors.buttonRed,
+                    color: iconColor,
                   ),
                   const SizedBox(
                     height: 8,
@@ -186,8 +208,8 @@ class TabButton extends StatelessWidget {
                   Container(
                     width: 8,
                     height: 8,
-                    decoration: const BoxDecoration(
-                        color: AppColors.buttonRed,
+                    decoration: BoxDecoration(
+                        color: selectorColor,
                         borderRadius: BorderRadius.all(Radius.circular(4))),
                   )
                 ],
