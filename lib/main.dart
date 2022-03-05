@@ -4,6 +4,7 @@ import 'package:flutter_design_case_new_balance/styles/sizes.dart';
 import 'package:flutter_design_case_new_balance/widgets/bottom_tab_bar.dart';
 import 'package:flutter_design_case_new_balance/widgets/category_buton.dart';
 import 'package:flutter_design_case_new_balance/widgets/dots_button.dart';
+import 'package:flutter_design_case_new_balance/widgets/view_all_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -162,6 +163,21 @@ class HomePage extends StatelessWidget {
                               icon: Icons.ballot, title: "Sport"),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.defaultMargin),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Best sellers",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      ViewAllButton(),
                     ],
                   ),
                 ),
