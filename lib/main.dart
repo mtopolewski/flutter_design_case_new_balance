@@ -4,6 +4,7 @@ import 'package:flutter_design_case_new_balance/styles/sizes.dart';
 import 'package:flutter_design_case_new_balance/widgets/bottom_tab_bar.dart';
 import 'package:flutter_design_case_new_balance/widgets/category_buton.dart';
 import 'package:flutter_design_case_new_balance/widgets/dots_button.dart';
+import 'package:flutter_design_case_new_balance/widgets/product_item.dart';
 import 'package:flutter_design_case_new_balance/widgets/view_all_button.dart';
 
 void main() {
@@ -171,7 +172,7 @@ class HomePage extends StatelessWidget {
                       horizontal: AppSizes.defaultMargin),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         "Best sellers",
                         style: TextStyle(
@@ -181,38 +182,51 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  height: 200,
-                  color: Colors.red,
+                GridView.count(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  children: [
+                    ProductItem(),
+                    ProductItem(),
+                    ProductItem(),
+                    ProductItem(),
+                    ProductItem(),
+                    ProductItem(),
+                  ],
                 ),
-                Container(
-                  height: 200,
-                  color: Colors.yellow,
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.blue,
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.green,
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.orange,
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.purple,
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.pink,
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.red,
-                ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.red,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.yellow,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.blue,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.green,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.orange,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.purple,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.pink,
+                // ),
+                // Container(
+                //   height: 200,
+                //   color: Colors.red,
+                // ),
               ],
             ),
           ),
