@@ -8,24 +8,24 @@ class ViewAllButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       child: Row(children: [
-        Text(
+        const Text(
           "View All",
           style: TextStyle(color: AppColors.buttonRed),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Container(
           height: 18,
           width: 18,
           alignment: Alignment.center,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColors.buttonRed,
             borderRadius: BorderRadius.all(
               Radius.circular(4),
             ),
           ),
-          child: Icon(
+          child: const Icon(
             Icons.keyboard_arrow_right,
             color: Colors.white,
             size: 18,

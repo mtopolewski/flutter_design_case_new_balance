@@ -182,19 +182,29 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                GridView.count(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  children: [
-                    ProductItem(),
-                    ProductItem(),
-                    ProductItem(),
-                    ProductItem(),
-                    ProductItem(),
-                    ProductItem(),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.defaultMargin),
+                  child: GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    childAspectRatio: 0.6,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    children: [
+                      ProductItem(),
+                      ProductItem(),
+                      ProductItem(),
+                      ProductItem(),
+                      ProductItem(),
+                      ProductItem(),
+                    ],
+                  ),
                 ),
+                SizedBox(
+                  height: 120,
+                )
                 // Container(
                 //   height: 200,
                 //   color: Colors.red,
