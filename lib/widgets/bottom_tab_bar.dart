@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_case_new_balance/styles/colors.dart';
 import 'dart:math' as Math;
 
-class BottomTabBar extends StatelessWidget {
+class BottomTabBar extends StatefulWidget {
   const BottomTabBar({Key? key}) : super(key: key);
+
+  @override
+  State<BottomTabBar> createState() => _BottomTabBarState();
+}
+
+class _BottomTabBarState extends State<BottomTabBar> {
+  var pressedState = [true, false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +28,49 @@ class BottomTabBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TabButton(icon: Icons.home),
-                  TabButton(icon: Icons.favorite_border_outlined),
+                  TabButton(
+                    icon: Icons.home,
+                    isPressed: pressedState[0],
+                    onTap: () {
+                      setState(() {
+                        _resetState();
+                        pressedState[0] = true;
+                      });
+                    },
+                  ),
+                  TabButton(
+                    icon: Icons.favorite_border_outlined,
+                    isPressed: pressedState[1],
+                    onTap: () {
+                      setState(() {
+                        _resetState();
+                        pressedState[1] = true;
+                      });
+                    },
+                  ),
                   Container(
                     width: 74,
                   ),
-                  TabButton(icon: Icons.notifications),
-                  TabButton(icon: Icons.account_box),
+                  TabButton(
+                    icon: Icons.notifications,
+                    isPressed: pressedState[2],
+                    onTap: () {
+                      setState(() {
+                        _resetState();
+                        pressedState[2] = true;
+                      });
+                    },
+                  ),
+                  TabButton(
+                    icon: Icons.account_box,
+                    isPressed: pressedState[3],
+                    onTap: () {
+                      setState(() {
+                        _resetState();
+                        pressedState[3] = true;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
@@ -39,6 +82,16 @@ class BottomTabBar extends StatelessWidget {
         ),
       ]),
     );
+  }
+
+  void _resetState() {
+    pressedState[0] = false;
+    pressedState[1] = false;
+    pressedState[2] = false;
+    pressedState[3] = false;
+    // pressedState.forEach((element) {
+    //   element = false;
+    // });
   }
 }
 
@@ -160,32 +213,39 @@ class BottomMenuClipper extends CustomClipper<Path> {
 }
 
 class TabButton extends StatefulWidget {
-  const TabButton({required this.icon, this.isPressed = false, Key? key})
+  const TabButton(
+      {required this.icon,
+      required this.onTap,
+      this.isPressed = false,
+      Key? key})
       : super(key: key);
   final IconData icon;
   final bool isPressed;
+  final Function onTap;
 
   @override
   State<TabButton> createState() => _TabButtonState();
 }
 
 class _TabButtonState extends State<TabButton> {
-  bool isPressed = false;
+  //bool isPressed = false;
 
   @override
   void initState() {
-    isPressed = widget.isPressed;
+    //isPressed = widget.isPressed;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    var isPressed = widget.isPressed;
     var selectorColor = isPressed ? AppColors.buttonRed : Colors.transparent;
     var iconColor = isPressed ? AppColors.buttonRed : Colors.grey;
     return Material(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
+          widget.onTap.call();
           setState(() {
             isPressed = !isPressed;
           });
