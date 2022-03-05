@@ -31,7 +31,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         titleSpacing: 0,
         backgroundColor: AppColors.backgroundWhite,
-        shadowColor: Colors.transparent,
+        //shadowColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
         title: Padding(
           padding:
