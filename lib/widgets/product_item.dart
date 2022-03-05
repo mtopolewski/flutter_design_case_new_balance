@@ -18,7 +18,7 @@ class ProductItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
@@ -50,82 +50,122 @@ class ProductItem extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 0),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Image.network(
                         'https://nbsklep.pl/picture/fit-in/900x619/filters:fill(white)/adb6add11740501ff96e9f2dcd6e12f2.jpg'),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "574V1",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(
+                          Icons.circle,
+                          size: 6,
+                          color: Colors.black,
                         ),
-                      ),
-                      Text(
-                        "(In Stock)",
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontStyle: FontStyle.italic,
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Icon(
+                          Icons.circle,
+                          size: 6,
                           color: Colors.grey,
                         ),
-                      )
-                    ],
-                  ),
-                  Text(
-                    "Men",
-                    style: TextStyle(
-                      fontSize: 12,
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Icon(
+                          Icons.circle,
+                          size: 6,
+                          color: Colors.grey,
+                        ),
+                      ],
                     ),
                   ),
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: AppColors.buttonRed,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: AppColors.buttonRed,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: AppColors.buttonRed,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: AppColors.buttonRed,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: AppColors.buttonRed,
+                      Row(
+                        children: [
+                          Text(
+                            "574V1",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "(In Stock)",
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.grey,
+                            ),
+                          )
+                        ],
                       ),
                       Text(
-                        "(14)",
-                        style: TextStyle(fontSize: 10),
+                        "Men",
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
                       ),
                     ],
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Column(
                     children: [
-                      Text(
-                        r"$",
-                        style: TextStyle(
-                          fontSize: 10,
-                        ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            size: 14,
+                            color: AppColors.buttonRed,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 14,
+                            color: AppColors.buttonRed,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 14,
+                            color: AppColors.buttonRed,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 14,
+                            color: AppColors.buttonRed,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 14,
+                            color: AppColors.buttonRed,
+                          ),
+                          Text(
+                            "(14)",
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "120.00",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 2),
+                            child: Text(
+                              r"$",
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Text(
+                            "120.00",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ],
                   )
                 ],

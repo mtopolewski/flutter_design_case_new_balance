@@ -188,7 +188,7 @@ class HomePage extends StatelessWidget {
                   child: GridView.count(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    childAspectRatio: 0.6,
+                    childAspectRatio: 0.5,
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
@@ -202,45 +202,13 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 120,
                 )
-                // Container(
-                //   height: 200,
-                //   color: Colors.red,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.yellow,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.blue,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.green,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.orange,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.purple,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.pink,
-                // ),
-                // Container(
-                //   height: 200,
-                //   color: Colors.red,
-                // ),
               ],
             ),
           ),
-          Align(
+          const Align(
             alignment: Alignment.bottomCenter,
             child: BottomTabBar(),
           )
