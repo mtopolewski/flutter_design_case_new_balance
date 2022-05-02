@@ -21,58 +21,66 @@ class _BottomTabBarState extends State<BottomTabBar> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: ClipPath(
+            child: ClipShadowPath(
+              shadow: const BoxShadow(
+                color: Colors.grey,
+                blurRadius: 6,
+                offset: Offset(0, 0), // Shadow position
+              ),
               clipper: BottomMenuClipper(),
-              child: Container(
-                color: Colors.white,
-                height: 120,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TabButton(
-                      icon: Icons.home,
-                      isPressed: pressedState[0],
-                      onTap: () {
-                        setState(() {
-                          _resetState();
-                          pressedState[0] = true;
-                        });
-                      },
-                    ),
-                    TabButton(
-                      icon: Icons.favorite_border_outlined,
-                      isPressed: pressedState[1],
-                      onTap: () {
-                        setState(() {
-                          _resetState();
-                          pressedState[1] = true;
-                        });
-                      },
-                    ),
-                    Container(
-                      width: 74,
-                    ),
-                    TabButton(
-                      icon: Icons.notifications,
-                      isPressed: pressedState[2],
-                      onTap: () {
-                        setState(() {
-                          _resetState();
-                          pressedState[2] = true;
-                        });
-                      },
-                    ),
-                    TabButton(
-                      icon: Icons.account_box,
-                      isPressed: pressedState[3],
-                      onTap: () {
-                        setState(() {
-                          _resetState();
-                          pressedState[3] = true;
-                        });
-                      },
-                    ),
-                  ],
+              child: ClipPath(
+                clipper: BottomMenuClipper(),
+                child: Container(
+                  color: Colors.white,
+                  height: 120,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TabButton(
+                        icon: Icons.home,
+                        isPressed: pressedState[0],
+                        onTap: () {
+                          setState(() {
+                            _resetState();
+                            pressedState[0] = true;
+                          });
+                        },
+                      ),
+                      TabButton(
+                        icon: Icons.favorite_border_outlined,
+                        isPressed: pressedState[1],
+                        onTap: () {
+                          setState(() {
+                            _resetState();
+                            pressedState[1] = true;
+                          });
+                        },
+                      ),
+                      Container(
+                        width: 74,
+                      ),
+                      TabButton(
+                        icon: Icons.notifications,
+                        isPressed: pressedState[2],
+                        onTap: () {
+                          setState(() {
+                            _resetState();
+                            pressedState[2] = true;
+                          });
+                        },
+                      ),
+                      TabButton(
+                        icon: Icons.account_box,
+                        isPressed: pressedState[3],
+                        onTap: () {
+                          setState(() {
+                            _resetState();
+                            pressedState[3] = true;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -280,5 +288,48 @@ class _TabButtonState extends State<TabButton> {
         ),
       ),
     );
+  }
+}
+
+class ClipShadowPath extends StatelessWidget {
+  final Shadow shadow;
+  final CustomClipper<Path> clipper;
+  final Widget child;
+
+  const ClipShadowPath({
+    Key? key,
+    required this.shadow,
+    required this.clipper,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _ClipShadowShadowPainter(
+        clipper: clipper,
+        shadow: shadow,
+      ),
+      child: ClipPath(child: child, clipper: clipper),
+    );
+  }
+}
+
+class _ClipShadowShadowPainter extends CustomPainter {
+  final Shadow shadow;
+  final CustomClipper<Path> clipper;
+
+  _ClipShadowShadowPainter({required this.shadow, required this.clipper});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = shadow.toPaint();
+    var clipPath = clipper.getClip(size).shift(shadow.offset);
+    canvas.drawPath(clipPath, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }

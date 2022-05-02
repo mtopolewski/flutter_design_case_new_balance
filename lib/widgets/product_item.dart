@@ -42,7 +42,7 @@ class ProductItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.favorite,
                         size: 20,
                         color: AppColors.buttonRed,

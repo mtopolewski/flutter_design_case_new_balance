@@ -8,7 +8,7 @@ import 'package:flutter_design_case_new_balance/widgets/product_item.dart';
 import 'package:flutter_design_case_new_balance/widgets/view_all_button.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -68,6 +68,7 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           SingleChildScrollView(
+            primary: false,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -141,6 +142,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 100,
                   child: ListView(
+                    primary: false,
                     scrollDirection: Axis.horizontal,
                     children: [
                       Center(
@@ -189,6 +191,7 @@ class HomePage extends StatelessWidget {
                   child: GridView.count(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
+                    primary: false,
                     childAspectRatio: 0.5,
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
