@@ -23,6 +23,11 @@ class _CategoryButtonState extends State<CategoryButton> {
     // var iconColor =
     //     widget._isSelected ? Colors.white : AppColors.buttonBlack;
     return InkWell(
+      customBorder: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(12),
+        ),
+      ),
       onTap: () {
         setState(() {
           widget._isSelected = !widget._isSelected;
